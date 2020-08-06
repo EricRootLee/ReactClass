@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import './Person/Person.css'
+import person from './Person/Person';
 
 class App extends Component {
   state = {
@@ -9,7 +10,8 @@ class App extends Component {
       { name: 'Max', age: 26 },
       { name: 'Manu', age: 26 },
       { name: 'Steph', age: 26 }
-    ]
+    ],
+    showPersons: false
   }
   switchNameHandler = (newName) => {
     console.log("Clicked")
@@ -31,16 +33,29 @@ class App extends Component {
     })
   }
 
+  tooglePersonHandler = () => {
+    const show = this.state.showPersons;
+    this.setState({ showPersons:!show })
+
+  }
+
   render() {
 
-const styles= {
-  backgroundColor:'blue'
-}
+    const styles = {
+      backgroundColor: 'blue'
+    }
     return (
       <div className="Person">
-        <button style={styles} onClick={this.switchNameHandler.bind(this, 'Sanda')} >Switch Name</button>
-        <Person changed={this.nameChangedHandler}  click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
-        <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
+
+        <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
+
+        {this.state.showPersons === true ? <div>
+
+          <Person changed={this.nameChangedHandler} click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
+          <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
+
+        </div> : null}
+
       </div>
     );
   }
