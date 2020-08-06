@@ -18,7 +18,6 @@ class App extends Component {
         { name: 'Muli', age: 26 },
         { name: 'Manu', age: 26 },
         { name: 'Steph', age: 26 }
-
       ]
     })
   }
