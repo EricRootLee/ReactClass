@@ -8,6 +8,6 @@ function App() {
       <Person />
     </div>
   );
-}
+  }
 
 export default App;
