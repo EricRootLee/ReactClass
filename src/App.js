@@ -23,6 +23,13 @@ class App extends Component {
       ]
     })
   }
+  deletePerson = (index) => {
+    // const  mtu = this.state.person.slice()
+    const mtu = [...this.state.person]
+    mtu.splice(index, 1)
+    this.setState({ person: mtu })
+
+  }
   nameChangedHandler = (event) => {
     this.setState({
       person: [
@@ -47,11 +54,11 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Person changed={this.nameChangedHandler} click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
-          <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
+
+          {this.state.person.map((e, index) => <Person changed={this.nameChangedHandler} click={this.deletePerson.bind(this, index)} name={e.name} age={e.age} > And I play Hocky</Person>)}
         </div>
       );
-    }s
+    }
 
     const styles = {
       backgroundColor: 'blue'
