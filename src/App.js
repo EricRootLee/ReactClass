@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-
+import './Person/Person.css'
 
 class App extends Component {
   state = {
@@ -33,7 +33,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Person">
         <button onClick={this.switchNameHandler.bind(this, 'Sanda')} >Switch Name</button>
         <Person changed={this.nameChangedHandler}  click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
         <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
