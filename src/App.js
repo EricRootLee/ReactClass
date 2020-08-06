@@ -35,11 +35,23 @@ class App extends Component {
 
   tooglePersonHandler = () => {
     const show = this.state.showPersons;
-    this.setState({ showPersons:!show })
+    this.setState({ showPersons: !show })
 
   }
 
   render() {
+
+
+    var persons = null
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person changed={this.nameChangedHandler} click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
+          <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
+        </div>
+      );
+    }s
 
     const styles = {
       backgroundColor: 'blue'
@@ -48,13 +60,8 @@ class App extends Component {
       <div className="Person">
 
         <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
+        {persons}
 
-        {this.state.showPersons === true ? <div>
-
-          <Person changed={this.nameChangedHandler} click={this.switchNameHandler} name={this.state.person[0].name} age={this.state.person[0].age} > And I play Hocky</Person>
-          <Person name={this.state.person[1].name} age={this.state.person[1].age} > And I play Hocky</Person>
-
-        </div> : null}
 
       </div>
     );
