@@ -30,13 +30,14 @@ class App extends Component {
     this.setState({ person: mtu })
 
   }
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.person.findIndex(p => { return p.id === id })
+    let person = {...this.state.person[personIndex]}
+    person[personIndex].name = event.target.value;
+    const people = [...this.state.person]
+    people[personIndex] = person
     this.setState({
-      person: [
-        { name: 'Max', age: 26 },
-        { name: event.target.value, age: 26 },
-        { name: 'Steph', age: 26 }
-      ]
+      person: people
     })
   }
 
@@ -54,8 +55,7 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-
-          {this.state.person.map((e, index) => <Person changed={this.nameChangedHandler} click={this.deletePerson.bind(this, index)} name={e.name} age={e.age} > And I play Hocky</Person>)}
+          {this.state.person.map((e, index) => <Person key={index} changed={(event) => this.nameChangedHandler(event, index)} click={this.deletePerson.bind(this, index)} name={e.name} age={e.age} > And I play Hocky</Person>)}
         </div>
       );
     }
@@ -65,11 +65,8 @@ class App extends Component {
     }
     return (
       <div className="Person">
-
         <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
         {persons}
-
-
       </div>
     );
   }
