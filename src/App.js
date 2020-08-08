@@ -43,13 +43,9 @@ class App extends Component {
   tooglePersonHandler = () => {
     const show = this.state.showPersons;
     this.setState({ showPersons: !show })
-
   }
-
-
   render() {
     var persons = null
-
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -63,22 +59,15 @@ class App extends Component {
       border: '1px solid blue',
       cursor: 'pointer'
     }
-    let classes = ['red', 'bold'].join(' ');
-
- 
+    let classes = ['red', 'bold'].join(' '); 
     return (
       <div className="App">
-
         <p className={classes} >This Is Working man</p>
-
         <div className="Person">
-
           <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
           {persons}
         </div>
-
       </div>
-
     );
   }
 }
