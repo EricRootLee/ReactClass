@@ -31,7 +31,7 @@ class App extends Component {
 
   }
   nameChangedHandler = (event, id) => {
-  //  const personIndex = this.state.person.findIndex(p => { return p.id === id })
+    //  const personIndex = this.state.person.findIndex(p => { return p.id === id })
     let guy = { ...this.state.person[id] }
     guy.name = event.target.value;
     let people = [...this.state.person]
@@ -45,6 +45,8 @@ class App extends Component {
     this.setState({ showPersons: !show })
 
   }
+
+
   render() {
     var persons = null
 
@@ -61,12 +63,22 @@ class App extends Component {
       border: '1px solid blue',
       cursor: 'pointer'
     }
+    let classes = ['red', 'bold'].join(' ');
 
+ 
     return (
-      <div className="Person">
-        <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
-        {persons}
+      <div className="App">
+
+        <p className={classes} >This Is Working man</p>
+
+        <div className="Person">
+
+          <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
+          {persons}
+        </div>
+
       </div>
+
     );
   }
 }
