@@ -29,7 +29,6 @@ class App extends Component {
     const mtu = [...this.state.person]
     mtu.splice(index, 1)
     this.setState({ person: mtu })
-
   }
   nameChangedHandler = (event, id) => {
     //  const personIndex = this.state.person.findIndex(p => { return p.id === id })
@@ -50,7 +49,8 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Persons persons={this.state.person}
+          <Persons
+            persons={this.state.person}
             clicked={this.deletePerson}
             changed={this.nameChangedHandler} />
         </div>
@@ -68,7 +68,6 @@ class App extends Component {
 
         <Cockpit styles={styles} classes={classes} tooglePersonHandler={this.tooglePersonHandler} />
         {persons}
-
       </div>
     );
   }
