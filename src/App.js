@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import './Person/Person.css'
-import person from './Person/Person';
+
 
 class App extends Component {
   state = {
@@ -31,25 +31,21 @@ class App extends Component {
 
   }
   nameChangedHandler = (event, id) => {
-    const personIndex = this.state.person.findIndex(p => { return p.id === id })
-    let person = {...this.state.person[personIndex]}
-    person[personIndex].name = event.target.value;
-    const people = [...this.state.person]
-    people[personIndex] = person
+  //  const personIndex = this.state.person.findIndex(p => { return p.id === id })
+    let guy = { ...this.state.person[id] }
+    guy.name = event.target.value;
+    let people = [...this.state.person]
+    people[id] = guy
     this.setState({
       person: people
     })
   }
-
   tooglePersonHandler = () => {
     const show = this.state.showPersons;
     this.setState({ showPersons: !show })
 
   }
-
   render() {
-
-
     var persons = null
 
     if (this.state.showPersons) {
@@ -59,10 +55,13 @@ class App extends Component {
         </div>
       );
     }
-
     const styles = {
-      backgroundColor: 'blue'
+      backgroundColor: 'green',
+      color: 'white',
+      border: '1px solid blue',
+      cursor: 'pointer'
     }
+
     return (
       <div className="Person">
         <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
