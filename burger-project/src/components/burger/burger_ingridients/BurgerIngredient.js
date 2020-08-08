@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './BurgerIngredient.css'
+import './BurgerIngredients.css'
 import PropTypes from 'prop-types'
 import BurgerBuilder from '../../../containers/burgerbuilder/BurgerBuilder'
 class BurgerIngredient extends Component {
@@ -7,10 +7,10 @@ class BurgerIngredient extends Component {
 
         let ingredient = null
         switch (this.props.type) {
-            case ('bread -bottom'):
+            case ('bread-bottom'):
                 ingredient = <div className='BreadBottom' ></div>
                 break;
-            case ('bread-bottom'):
+            case ('bread-top'):
                 ingredient = <div className='BreadTop' >
                     <div className='Seeds1'></div>
                     <div className='Seeds2'></div>
@@ -38,7 +38,7 @@ class BurgerIngredient extends Component {
 
 }
 
-BurgerBuilder.propTypes = {
+BurgerIngredient.propTypes = {
     type: PropTypes.string.isRequired
 }
 
