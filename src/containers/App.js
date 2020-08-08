@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from '../components/Persons/Person/Person';
 import '../components/Persons/Person/Person.css'
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/cockpit/cockpit';
 
 
 class App extends Component {
@@ -45,11 +46,13 @@ class App extends Component {
     this.setState({ showPersons: !show })
   }
   render() {
-    var persons = null
+    let persons = null
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.person.map((e, index) => <Person key={index} changed={(event) => this.nameChangedHandler(event, index)} click={this.deletePerson.bind(this, index)} name={e.name} age={e.age} > And I play Hocky</Person>)}
+          <Persons persons={this.state.person}
+            clicked={this.deletePerson}
+            changed={this.nameChangedHandler} />
         </div>
       );
     }
@@ -59,14 +62,13 @@ class App extends Component {
       border: '1px solid blue',
       cursor: 'pointer'
     }
-    let classes = ['red', 'bold'].join(' '); 
+    let classes = ['red', 'bold'].join(' ');
     return (
       <div className="App">
-        <p className={classes} >This Is Working man</p>
-        <div className="Person">
-          <button style={styles} onClick={this.tooglePersonHandler} >Switch Name</button>
-          {persons}
-        </div>
+
+        <Cockpit styles={styles} classes={classes} tooglePersonHandler={this.tooglePersonHandler} />
+        {persons}
+
       </div>
     );
   }
