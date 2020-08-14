@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 class BurgerIngredient extends Component {
     render() {
-
         let ingredient = null
         switch (this.props.type) {
             case ('bread-bottom'):
@@ -33,9 +32,7 @@ class BurgerIngredient extends Component {
                 break;
         }
         return ingredient
-
     }
-
 }
 
 BurgerIngredient.propTypes = {
