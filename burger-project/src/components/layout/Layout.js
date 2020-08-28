@@ -10,6 +10,5 @@ import './Layout.css'
                     {props.children}
                 </main>
         </Aux>
-
  )
 export default layout

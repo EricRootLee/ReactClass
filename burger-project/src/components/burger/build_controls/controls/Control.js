@@ -1,8 +1,12 @@
 import React from 'react'
-
-const controls = () => {
+import './Controls.css'
+const controls =  (props) => {
     return (
-        <div></div>
+        <div className="BuildControl">
+            <button className="Label">{props.item_label}</button>
+            <button className="Less">Less</button>
+            <button className="More">More</button>
+        </div>
     );
 }
 
